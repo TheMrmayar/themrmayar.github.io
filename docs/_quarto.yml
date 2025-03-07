@@ -1,0 +1,18 @@
+project:
+  type: website
+
+website:
+  search: false
+  title: "Maharrem Ayar"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - href: cv.qmd
+        text: CV
+format:
+  html:
+    theme: darkly
+    
+
+
