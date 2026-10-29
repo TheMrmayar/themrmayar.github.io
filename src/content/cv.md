@@ -173,3 +173,7 @@ Not yet.
 
 </div>
 </div>
+
+<a href="/assets/maharrem-ayar-cv-october-2026.pdf" target="_blank" rel="noopener">
+  View CV (PDF)
+</a>
