@@ -9,12 +9,7 @@ University of California Davis
 mrmayar [at] ucdavis dot edu  
 Last Updated: October 2026
 
-<p class="cv-pdf-link">
-  <a href="/maharrem-ayar-cv-october-2026.pdf" target="_blank" rel="noopener noreferrer">
-    View / Download CV (PDF) ↗
-  </a>
-</p>
-
+**[View / Download CV (PDF) ↗](/maharrem-ayar-cv-october-2026.pdf)**
 ## Education
 
 <div class="cv-entry">
