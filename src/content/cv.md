@@ -5,28 +5,39 @@ title: ""
 # Maharrem Ayar
 
 Department of Linguistics  
-University of California Davis  
+University of California, Davis  
 mrmayar [at] ucdavis dot edu  
 Last Updated: October 2026
 
-**[View / Download CV (PDF) ↗](/maharrem-ayar-cv-october-2026.pdf)**
+<p style="margin: 1.2rem 0;">
+  <a href="/maharrem-ayar-cv-october-2026.pdf" target="_blank" rel="noopener noreferrer">
+    <strong>📄 View / Download CV (PDF) ↗</strong>
+  </a>
+</p>
+
 ## Education
 
 <div class="cv-entry">
 <div class="cv-date">2023–Present</div>
-<div class="cv-body">University of California, Davis, Linguistics Ph.D.</div>
+<div class="cv-body">
+
+**University of California, Davis**  
+Ph.D. in Linguistics
+
+</div>
 </div>
 
 <div class="cv-entry">
 <div class="cv-date">2017–2021</div>
-<div class="cv-body">Boğaziçi University, Linguistics BA.</div>
+<div class="cv-body">
+
+**Boğaziçi University**  
+B.A. in Linguistics
+
+</div>
 </div>
 
-## Publications in refereed journals
-
-Not yet.
-
-## Presentations
+## Conference Presentations
 
 <div class="cv-entry">
 <div class="cv-date">2024</div>
@@ -53,87 +64,12 @@ Not yet.
 <div class="cv-body">
 
 **A Proposition for Typology of Modality Markers in Sign Languages**  
-*BUSTCEL* — İstanbul, Türkiye
+*Boğaziçi University Student Conference on Theoretical and Experimental Linguistics (BUSTCEL)* — İstanbul, Türkiye
 
 </div>
 </div>
 
-## Academic Service
-
-<div class="cv-entry">
-<div class="cv-date">2026</div>
-<div class="cv-body">
-
-**Ad Hoc Reviewer**  
-*CogSci 2026* — 1 submission
-
-</div>
-</div>
-
-## Pop-Science
-
-[Bilimin En Zor Problemi Serisi](https://medium.com/cogist/tagged/bilimin-en-zor-problemi)
-
-[Mentalese Muhabbet: İşaret Dili Biliş Hakkında Ne Söylüyor?](https://open.spotify.com/episode/5OokyTNJJvmBpCBadQ9hOx?si=XFu-rZeXRYO_f1CdYAzLVA&nd=1&dlsi=f02d09ff6ae54fdf)
-
-## Teaching Experience
-
-<div class="cv-entry">
-<div class="cv-date">2026</div>
-<div class="cv-body">
-
-**LIN103B - Linguistic Analysis II: Morphology, Syntax, Semantics**  
-*Fall Quarter, Teaching Assistant*, University of California, Davis
-
-**LIN131 - Introduction to Syntactic Theory**  
-*Spring Quarter, Teaching Assistant*, University of California, Davis
-
-**LIN001Y - Introduction to Linguistics**  
-*Winter Quarter, Teaching Assistant*, University of California, Davis
-
-</div>
-</div>
-
-<div class="cv-entry">
-<div class="cv-date">2025</div>
-<div class="cv-body">
-
-**LIN001Y - Introduction to Linguistics**  
-*Fall Quarter, Teaching Assistant*, University of California, Davis
-
-**LIN001Y - Introduction to Linguistics**  
-*Winter Quarter, Teaching Assistant*, University of California, Davis
-
-</div>
-</div>
-
-<div class="cv-entry">
-<div class="cv-date">2024</div>
-<div class="cv-body">
-
-**LIN001Y - Introduction to Linguistics**  
-*Fall Quarter, Teaching Assistant*, University of California, Davis
-
-**LIN001Y - Introduction to Linguistics**  
-*Spring Quarter, Teaching Assistant*, University of California, Davis
-
-**LIN001Y - Introduction to Linguistics**  
-*Winter Quarter, Teaching Assistant*, University of California, Davis
-
-</div>
-</div>
-
-<div class="cv-entry">
-<div class="cv-date">2023</div>
-<div class="cv-body">
-
-**LIN001 - Introduction to Linguistics**  
-*Fall Quarter, Teaching Assistant*, University of California, Davis
-
-</div>
-</div>
-
-## Experience
+## Research & Project Management
 
 <div class="cv-entry">
 <div class="cv-date">2023–Present</div>
@@ -150,7 +86,7 @@ Not yet.
 <div class="cv-body">
 
 **Project Manager**  
-*SRCD Small Grants Program for Early Career Scholars 2022: My Sign App*
+*SRCD Small Grants Program for Early Career Scholars: "My Sign App"*
 
 </div>
 </div>
@@ -160,7 +96,7 @@ Not yet.
 <div class="cv-body">
 
 **Project Assistant**  
-*TADNET - EU Endangered Languages Network*
+*TADNET — EU Endangered Languages Network*
 
 </div>
 </div>
@@ -170,7 +106,89 @@ Not yet.
 <div class="cv-body">
 
 **Project Assistant**  
-*Boğaziçi University Research Fund #14458*
+*Boğaziçi University Research Fund (#14458)*
+
+</div>
+</div>
+
+## Teaching Experience
+
+<div class="cv-entry">
+<div class="cv-date">2026</div>
+<div class="cv-body">
+
+**LIN 103B — Linguistic Analysis II: Morphology, Syntax, Semantics**  
+*Fall Quarter, Teaching Assistant*, University of California, Davis
+
+**LIN 131 — Introduction to Syntactic Theory**  
+*Spring Quarter, Teaching Assistant*, University of California, Davis
+
+**LIN 001Y — Introduction to Linguistics (Hybrid)**  
+*Winter Quarter, Teaching Assistant*, University of California, Davis
+
+</div>
+</div>
+
+<div class="cv-entry">
+<div class="cv-date">2025</div>
+<div class="cv-body">
+
+**LIN 001Y — Introduction to Linguistics (Hybrid)**  
+*Winter & Fall Quarters, Teaching Assistant*, University of California, Davis
+
+</div>
+</div>
+
+<div class="cv-entry">
+<div class="cv-date">2024</div>
+<div class="cv-body">
+
+**LIN 001Y — Introduction to Linguistics (Hybrid)**  
+*Winter, Spring & Fall Quarters, Teaching Assistant*, University of California, Davis
+
+</div>
+</div>
+
+<div class="cv-entry">
+<div class="cv-date">2023</div>
+<div class="cv-body">
+
+**LIN 001 — Introduction to Linguistics**  
+*Fall Quarter, Teaching Assistant*, University of California, Davis
+
+</div>
+</div>
+
+## Academic Service
+
+<div class="cv-entry">
+<div class="cv-date">2026</div>
+<div class="cv-body">
+
+**Ad Hoc Reviewer**  
+*Annual Meeting of the Cognitive Science Society (CogSci 2026)*
+
+</div>
+</div>
+
+## Public Outreach & Science Communication
+
+<div class="cv-entry">
+<div class="cv-date">Article Series</div>
+<div class="cv-body">
+
+**[Bilimin En Zor Problemi Serisi](https://medium.com/cogist/tagged/bilimin-en-zor-problemi)**  
+*"The Hardest Problem of Science"* — Popular cognitive science series on Medium (CogIST)
+
+</div>
+</div>
+
+<div class="cv-entry">
+<div class="cv-date">Podcast</div>
+<div class="cv-body">
+
+**[Mentalese Muhabbet: İşaret Dili Biliş Hakkında Ne Söylüyor?](https://open.spotify.com/episode/5OokyTNJJvmBpCBadQ9hOx)**  
+*"What Does Sign Language Say About Cognition?"* — Featured guest episode on Spotify
 
 </div>
 </div>
