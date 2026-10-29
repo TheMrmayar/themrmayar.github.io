@@ -1,8 +1,8 @@
 // Post-build checks. Run with:  npm run build && npm run verify
 //
 // 1. Text fidelity: the visible text inside <main> of dist/index.html and
-//    dist/cv.html must equal the text of the original .qmd files in
-//    migration/original (after removing Markdown syntax and collapsing whitespace).
+//    dist/cv.html must equal the text of the Markdown files in
+//    src/content (after removing Markdown syntax and collapsing whitespace).
 // 2. Every URL written in the originals appears, unchanged, in the built pages.
 // 3. Every local href/src/srcset in the built HTML points at a file that exists.
 // 4. CNAME, <html lang>, one <h1> per page, <title>, and image alt text.
@@ -13,7 +13,7 @@ import { readFileSync, existsSync, readdirSync, statSync } from 'node:fs';
 import { join, resolve } from 'node:path';
 
 const dist = resolve(process.argv[2] ?? 'dist');
-const original = resolve('migration/original');
+const original = resolve('src/content');
 
 let failures = 0;
 const pass = (msg) => console.log(`  ok    ${msg}`);
@@ -28,9 +28,9 @@ const normalise = (s) => s.replace(/\s+/g, ' ').trim();
 function decodeEntities(s) {
   const named = { amp: '&', lt: '<', gt: '>', quot: '"', apos: "'", nbsp: ' ' };
   return s
-    .replace(/&#x([0-9a-f]+);/gi, (_, h) => String.fromCodePoint(parseInt(h, 16)))
-    .replace(/&#(\d+);/g, (_, d) => String.fromCodePoint(parseInt(d, 10)))
-    .replace(/&([a-z]+);/gi, (m, n) => named[n.toLowerCase()] ?? m);
+  .replace(/&#x([0-9a-f]+);/gi, (_, h) => String.fromCodePoint(parseInt(h, 16)))
+  .replace(/&#(\d+);/g, (_, d) => String.fromCodePoint(parseInt(d, 10)))
+  .replace(/&([a-z]+);/gi, (m, n) => named[n.toLowerCase()] ?? m);
 }
 
 // ---------------------------------------------------------------- originals
@@ -43,19 +43,21 @@ function readQmd(name) {
 // Pandoc Markdown -> plain text, for the constructs used in these two files.
 function bodyToText(body) {
   return body
-    .replace(/<br\s*\/?>/gi, ' ')
-    .split('\n')
-    .filter((line) => line.trim() !== '\\') // Pandoc line-break-only paragraph
-    .map((line) => line.replace(/^#{1,6}\s+/, '').replace(/\\\s*$/, ''))
-    .join('\n')
-    .replace(/\[([^\]]*)\]\(([^)]*)\)/g, '$1')
-    .replace(/\*\*([^*]+)\*\*/g, '$1')
-    .replace(/\*([^*]+)\*/g, '$1');
+  .replace(/<br\s*\/?>/gi, ' ')
+  .replace(/<\/?span\b[^>]*>/gi, '') // inline wrappers: no gap
+  .replace(/<\/?[a-z][^>]*>/gi, ' ') // any other HTML tag (div, ...): gap
+  .split('\n')
+  .filter((line) => line.trim() !== '\\') // Pandoc line-break-only paragraph
+  .map((line) => line.replace(/^#{1,6}\s+/, '').replace(/\\\s*$/, ''))
+  .join('\n')
+  .replace(/\[([^\]]*)\]\(([^)]*)\)/g, '$1')
+  .replace(/\*\*([^*]+)\*\*/g, '$1')
+  .replace(/\*([^*]+)\*/g, '$1');
 }
 
 const urlsIn = (body) => [...body.matchAll(/\]\(([^)]+)\)/g)].map((m) => m[1]);
 const frontValues = (front, key) =>
-  [...front.matchAll(new RegExp(`^\\s*(?:- )?${key}:\\s*(.+)$`, 'gm'))].map((m) => m[1].trim());
+[...front.matchAll(new RegExp(`^\\s*(?:- )?${key}:\\s*(.+)$`, 'gm'))].map((m) => m[1].trim());
 
 // -------------------------------------------------------------------- built
 function readBuilt(name) {
@@ -73,10 +75,10 @@ function mainText(html) {
   return normalise(
     decodeEntities(
       m[1]
-        .replace(/<(script|style)\b[\s\S]*?<\/\1>/g, '')
-        .replace(/<br\s*\/?>/gi, ' ')
-        .replace(/<\/?(?:a|strong|em|b|i|span)(?:\s[^>]*)?>/g, '') // inline: no gap
-        .replace(/<[^>]+>/g, ' '), // block-level: gap
+      .replace(/<(script|style)\b[\s\S]*?<\/\1>/g, '')
+      .replace(/<br\s*\/?>/gi, ' ')
+      .replace(/<\/?(?:a|strong|em|b|i|span)(?:\s[^>]*)?>/g, '') // inline: no gap
+      .replace(/<[^>]+>/g, ' '), // block-level: gap
     ),
   );
 }
@@ -112,8 +114,8 @@ function checkPage(builtName, qmdName, { includeFrontLinkTexts }) {
     check(/\salt="[^"]+"/.test(img), 'image has alt text');
 }
 
-checkPage('index.html', 'index.qmd', { includeFrontLinkTexts: true });
-checkPage('cv.html', 'cv.qmd', { includeFrontLinkTexts: false });
+checkPage('index.html', 'index.md', { includeFrontLinkTexts: true });
+checkPage('cv.html', 'cv.md', { includeFrontLinkTexts: false });
 
 // ------------------------------------------------------- local link / assets
 console.log('\nlocal links and assets');
@@ -138,10 +140,10 @@ for (const file of htmlFiles(dist)) {
   for (const m of html.matchAll(/\s(?:href|src)="([^"]*)"/g)) refs.push(decodeEntities(m[1]));
   for (const m of html.matchAll(/\ssrcset="([^"]*)"/g))
     for (const part of decodeEntities(m[1]).split(',')) refs.push(part.trim().split(/\s+/)[0]);
-  for (const ref of refs) {
-    if (!ref.startsWith('/') || ref.startsWith('//')) continue;
-    check(resolves(ref), `${file.slice(dist.length + 1)} -> ${ref}`);
-  }
+    for (const ref of refs) {
+      if (!ref.startsWith('/') || ref.startsWith('//')) continue;
+        check(resolves(ref), `${file.slice(dist.length + 1)} -> ${ref}`);
+    }
 }
 
 // ------------------------------------------------------------- deployment
