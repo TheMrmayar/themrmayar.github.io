@@ -1,0 +1,59 @@
+---
+import '../styles/global.css';
+import { site } from '../config/site.mjs';
+
+interface Props {
+  /** Page name shown before the site title in the browser tab. */
+  title?: string;
+  /** Key of the current page in site.nav, used for aria-current. */
+  current: 'home' | 'cv';
+}
+
+const { title, current } = Astro.props;
+const pageTitle = title ? `${title} – ${site.title}` : site.title;
+const isHome = current === 'home';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light" />
+    <title>{pageTitle}</title>
+  </head>
+  <body class={`page-${current}`}>
+    <header class="site-header">
+      {
+        isHome ? (
+          <h1 class="wordmark">
+            <a href="/">{site.title}</a>
+          </h1>
+        ) : (
+          <p class="wordmark">
+            <a href="/">{site.title}</a>
+          </p>
+        )
+      }
+      <nav class="site-nav" aria-label="Main">
+        <ul>
+          {
+            site.nav.map((item) => (
+              <li>
+                <a
+                  href={item.href}
+                  aria-current={item.key === current ? 'page' : undefined}
+                >
+                  {item.text}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+    </header>
+    <main id="main">
+      <slot />
+    </main>
+  </body>
+</html>

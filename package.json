@@ -1,0 +1,20 @@
+{
+  "name": "maharremayar-site",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Academic website of Maharrem Ayar, migrated from Quarto to Astro.",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "verify": "node scripts/verify-site.mjs dist"
+  },
+  "engines": {
+    "node": "^18.20.8 || ^20.3.0 || >=22.0.0"
+  },
+  "dependencies": {
+    "astro": "^5.0.0"
+  }
+}

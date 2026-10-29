@@ -1,0 +1,370 @@
+/* ==========================================================================
+   Design tokens
+   Palette is taken from the supplied portrait: a cool, pale studio backdrop.
+   Pages sit on that same mist so the photograph can dissolve into the page.
+   ========================================================================== */
+:root {
+  --mist: #11141b;   /* sayfa arka planı */
+  --ink: #e8ebf2;    /* metin */
+  --slate: #a3adc0;  /* ikincil metin, tarihler */
+  --rule: #2a3040;   /* ince çizgiler */
+  --cobalt: #93a8ff; /* linkler, aktif sayfa, odak */
+
+  --serif: 'Charter', 'Bitstream Charter', 'Sitka Text', 'Cambria', 'Georgia', serif;
+  --sans: system-ui, -apple-system, 'Segoe UI', 'Inter', Roboto, 'Helvetica Neue', Arial, sans-serif;
+
+  --gutter: clamp(1.25rem, 5vw, 3rem);
+  --measure: 64rem;
+
+  color-scheme: dark;
+}
+
+/* ==========================================================================
+   Base
+   ========================================================================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  background: var(--mist);
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  font-kerning: normal;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+  text-decoration-line: underline;
+  text-decoration-thickness: 0.06em;
+  text-underline-offset: 0.22em;
+  text-decoration-color: color-mix(in srgb, currentColor 40%, transparent);
+  transition: color 120ms ease, text-decoration-color 120ms ease;
+}
+
+a:hover {
+  color: var(--cobalt);
+  text-decoration-color: currentColor;
+}
+
+:focus-visible {
+  outline: 2px solid var(--cobalt);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--cobalt) 22%, transparent);
+}
+
+/* ==========================================================================
+   Header and navigation
+   ========================================================================== */
+.site-header,
+main {
+  width: min(100% - 2 * var(--gutter), var(--measure));
+  margin-inline: auto;
+}
+
+.site-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem 2rem;
+  padding-block: 1.5rem;
+}
+
+.wordmark {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0.005em;
+}
+
+.wordmark a {
+  text-decoration: none;
+}
+
+.site-nav ul {
+  display: flex;
+  gap: 1.75rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-family: var(--sans);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.site-nav a {
+  display: inline-block;
+  padding-block: 0.4rem;
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+}
+
+.site-nav a[aria-current='page'] {
+  border-bottom-color: var(--cobalt);
+}
+
+main {
+  flex: 1;
+  padding-bottom: 4rem;
+}
+
+/* ==========================================================================
+   Home
+   ========================================================================== */
+.home {
+  display: grid;
+  gap: 1.5rem;
+  align-items: center;
+  padding-block: 0.5rem 1rem;
+}
+
+.intro {
+  max-width: 34rem;
+  font-size: clamp(1.3rem, 1.05rem + 1.1vw, 1.65rem);
+  line-height: 1.5;
+  letter-spacing: -0.005em;
+}
+
+.intro > :first-child {
+  margin-top: 0;
+}
+
+.intro > :last-child {
+  margin-bottom: 0;
+}
+
+.home-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 2rem;
+  margin: 2.25rem 0 0;
+  padding: 0;
+  list-style: none;
+  font-family: var(--sans);
+  font-size: 0.9375rem;
+  font-weight: 500;
+}
+
+.home-links a {
+  text-decoration-line: none;
+  border-bottom: 2px solid var(--cobalt);
+  padding-bottom: 0.15rem;
+}
+
+.home-links a:hover {
+  background: color-mix(in srgb, var(--cobalt) 8%, transparent);
+}
+
+/* The portrait's backdrop matches the page, and its edges are feathered so the
+   photograph dissolves into the page instead of sitting in a frame. */
+.portrait {
+  border-radius: 1.25rem;
+  order: -1;
+  margin: 0;
+}
+
+.portrait img {
+  display: block;
+  width: 100%;
+  height: auto;
+  animation: emerge 1100ms cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+
+@keyframes emerge {
+  from {
+    opacity: 0;
+    transform: translateY(0.75rem);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (max-width: 55.99rem) {
+  .portrait {
+    width: min(100%, 30rem);
+    margin-inline: auto;
+  }
+}
+
+@media (min-width: 56rem) {
+  .home {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+    gap: 3rem;
+    min-height: calc(100vh - 10rem);
+    min-height: calc(100svh - 10rem);
+    padding-block: 0 2rem;
+  }
+
+  .portrait {
+    order: 0;
+    margin-right: calc(-1 * var(--gutter) / 2);
+  }
+}
+
+/* ==========================================================================
+   CV
+   The markdown renders as a flat run of h1, p, h2, p, p, ... children. On wide
+   screens that run is placed on a two-column grid: section titles sit in the
+   left margin, and each entry shows its date and its details side by side.
+   ========================================================================== */
+.cv {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  padding-block: 1rem 2rem;
+}
+
+/* Stand-alone <br> lines in cv.qmd are Pandoc spacing; margins do that job here. */
+.cv > br,
+.md-spacer {
+  display: none;
+}
+
+.cv > h1 {
+  grid-column: 1 / -1;
+  margin: 0.5rem 0 1.25rem;
+  font-size: clamp(2.5rem, 1.6rem + 4.5vw, 4.25rem);
+  font-weight: 400;
+  line-height: 1.04;
+  letter-spacing: -0.02em;
+}
+
+.cv > h1 + p {
+  grid-column: 1 / -1;
+  margin: 0 0 1rem;
+  color: var(--slate);
+  line-height: 1.6;
+}
+
+.cv > h2 {
+  margin: 3rem 0 0.75rem;
+  font-family: var(--sans);
+  font-size: 0.9375rem;
+  font-weight: 650;
+  line-height: 1.45;
+  letter-spacing: 0.005em;
+}
+
+.cv > p {
+  margin: 0 0 1.35rem;
+}
+
+.cv > h2 + p {
+  margin-top: 0;
+}
+
+.cv-entry {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0.1rem;
+}
+
+.cv-date {
+  font-family: var(--sans);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  line-height: 1.9;
+  font-variant-numeric: tabular-nums;
+  color: var(--slate);
+}
+
+.cv-body strong {
+  display: block;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.cv-body em {
+  font-style: italic;
+  color: var(--slate);
+}
+
+@media (min-width: 48rem) {
+  .cv {
+    grid-template-columns: 10.5rem minmax(0, 1fr);
+    column-gap: 2rem;
+    align-items: baseline;
+  }
+
+  .cv > h2 {
+    grid-column: 1;
+    margin-top: 3.5rem;
+    margin-bottom: 1.35rem;
+  }
+
+  .cv > p:not(.cv-entry),
+  .cv > .cv-entry {
+    grid-column: 2;
+  }
+
+  .cv > h2 + p {
+    margin-top: 3.5rem;
+  }
+
+  .cv-entry {
+    grid-template-columns: 9rem minmax(0, 1fr);
+    column-gap: 1.5rem;
+    align-items: baseline;
+  }
+}
+
+/* ==========================================================================
+   Motion and print
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  .portrait img {
+    animation: none;
+  }
+  a {
+    transition: none;
+  }
+}
+
+@media print {
+  body {
+    background: #fff;
+    color: #000;
+    font-size: 11pt;
+  }
+  .site-header,
+  .portrait {
+    display: none;
+  }
+  main {
+    width: 100%;
+    padding: 0;
+  }
+  a {
+    text-decoration: none;
+  }
+  .cv-date,
+  .cv-body em,
+  .cv > h1 + p {
+    color: #333;
+  }
+}

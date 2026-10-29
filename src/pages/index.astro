@@ -1,0 +1,40 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '../layouts/BaseLayout.astro';
+// index.md is the unmodified index.qmd: the paragraph is rendered below, and the
+// link list comes from its front matter (about.links), so the URLs live in one place.
+import { Content, frontmatter } from '../content/index.md';
+// Front matter says `image: profile.jpg`; the file lives in src/assets so Astro can optimise it.
+import portrait from '../assets/profile.jpg';
+
+const links: { text: string; href: string }[] = frontmatter.about?.links ?? [];
+---
+
+<BaseLayout current="home">
+  <div class="home">
+    <div class="home-text">
+      <div class="intro">
+        <Content />
+      </div>
+      <ul class="home-links">
+        {
+          links.map((link) => (
+            <li>
+              <a href={link.href}>{link.text}</a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+    <figure class="portrait">
+      <Image
+        src={portrait}
+        alt="Portrait of Maharrem Ayar"
+        widths={[480, 720, 1080, 1500]}
+        sizes="(min-width: 896px) 540px, 100vw"
+        loading="eager"
+        fetchpriority="high"
+      />
+    </figure>
+  </div>
+</BaseLayout>
